@@ -1,0 +1,32 @@
+
+{% extends 'vaseline/student/base.html' %}
+
+
+{% block navbar %}
+
+{% include 'vaseline/student/nav.html' %}
+
+{% endblock %}
+
+
+{% block content %}
+
+{% for set in sets %}
+    <a href="{% url 'set' id=set.uuid %}"> {{set.name}} </a>
+{% empty %}
+        {# no set found notice #}
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h3 class="text-center">Hello , {{user.username}}</h3>
+                    <h5 class="text-center">You don't have any set yet!!</h5>
+                    <div class="text-center">
+                        <a href="{% url 'join-set' %}" class="btn  btn-primary">Join A Problem Set</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+
+
+{% endblock %}

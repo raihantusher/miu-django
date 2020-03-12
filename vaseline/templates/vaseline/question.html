@@ -1,0 +1,53 @@
+
+{% extends 'todo/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{question.name}}</div>
+                <div class="card-body">
+                    <h1>re {{question.description}}</h1>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="card mt-4">
+                <div class="card-body " >
+                    <div id="editor" >{{question.output_template}}</div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary">Run</button>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-success" type="submit"> Submit</button>
+                    </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<script src="{% static 'ace-editor/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+    <script>
+    var editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/python");
+    editor.resize(true);
+    
+    </script>
+
+
+{% endblock %}

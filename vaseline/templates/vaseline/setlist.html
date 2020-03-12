@@ -1,0 +1,26 @@
+{% extends 'todo/base.html' %}
+
+
+
+
+{% block content%}
+
+<h1>hello</h1>
+
+
+{% for set in sets %}
+
+   <a href="{% url 'set' id=set.uuid %}">
+       <div class="card">
+           <div class="card-body">
+               <h5 class="card-title">   {{set.name}}/h5>
+               <p class="card-text">   {{set.name}}</p>
+           </div>
+           
+       </div>
+     
+    </a>
+{% endfor %}
+
+
+{% endblock %}
