@@ -1,12 +1,16 @@
 
-{% extends 'todo/base.html' %}
+{% extends 'vaseline/student/base.html' %}
 
 {% load static %}
 
+
+{% block navbar %}
+
+{% include 'vaseline/student/nav.html' %}
+
+{% endblock %}
+
 {% block content %}
-
-
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

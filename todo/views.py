@@ -12,9 +12,11 @@ from django.http import HttpResponse
 
 
 from vaseline.models import Sett
+
 def home(request):
     if request.user.is_superuser==True:
-        return HttpResponse("admin")
+        seT=Sett.objects.all()
+        return render(request,'vaseline/administrator/home.html',{'sets':seT})
 
     if request.user.is_authenticated:
         seT=Sett.objects.filter(users__id__exact=request.user.id)

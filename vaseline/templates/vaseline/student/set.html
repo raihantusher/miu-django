@@ -1,0 +1,38 @@
+
+{% extends 'vaseline/student/base.html' %}
+
+
+
+
+{% block navbar %}
+
+{% include 'vaseline/student/nav.html' %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% for q in questions %}
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title"> {{q.name}}</h5>
+                    <p class="card-text"> {{q.description}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'question' id=q.id %}" class="btn btn-success">Solve</a>
+                </div>
+            </div>
+         {% empty %}
+            <h4 class="alert alert-danger text-center mt-3">Sorry! no questions are available right now. </h4>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+       
+{% endblock %}
